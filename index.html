@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="description" content="iReasoner: Trajectory-Aware Intrinsic Reasoning Supervision for Self-Evolving Large Multimodal Models">
+  <meta name="keywords" content="iReasoner, Large Multimodal Models, self-evolving, chain-of-thought, reasoning, unsupervised, vision-language">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iReasoner</title>
+
+  <style type="text/css">svg:not(:root).svg-inline--fa{overflow:visible}.svg-inline--fa{display:inline-block;font-size:inherit;height:1em;overflow:visible;vertical-align:-.125em}.svg-inline--fa.fa-lg{vertical-align:-.225em}.svg-inline--fa.fa-w-1{width:.0625em}.svg-inline--fa.fa-w-2{width:.125em}.svg-inline--fa.fa-w-3{width:.1875em}.svg-inline--fa.fa-w-4{width:.25em}.svg-inline--fa.fa-w-5{width:.3125em}.svg-inline--fa.fa-w-6{width:.375em}.svg-inline--fa.fa-w-7{width:.4375em}.svg-inline--fa.fa-w-8{width:.5em}.svg-inline--fa.fa-w-9{width:.5625em}.svg-inline--fa.fa-w-10{width:.625em}.svg-inline--fa.fa-w-11{width:.6875em}.svg-inline--fa.fa-w-12{width:.75em}.svg-inline--fa.fa-w-13{width:.8125em}.svg-inline--fa.fa-w-14{width:.875em}.svg-inline--fa.fa-w-15{width:.9375em}.svg-inline--fa.fa-w-16{width:1em}.svg-inline--fa.fa-w-17{width:1.0625em}.svg-inline--fa.fa-w-18{width:1.125em}.svg-inline--fa.fa-w-19{width:1.1875em}.svg-inline--fa.fa-w-20{width:1.25em}.svg-inline--fa.fa-pull-left{margin-right:.3em;width:auto}.svg-inline--fa.fa-pull-right{margin-left:.3em;width:auto}.svg-inline--fa.fa-border{height:1.5em}.svg-inline--fa.fa-li{width:2em}.svg-inline--fa.fa-fw{width:1.25em}.fa-layers svg.svg-inline--fa{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.fa-layers{display:inline-block;height:1em;position:relative;text-align:center;vertical-align:-.125em;width:1em}.fa-layers svg.svg-inline--fa{-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter,.fa-layers-text{display:inline-block;position:absolute;text-align:center}.fa-layers-text{left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter{background-color:#ff253a;border-radius:1em;-webkit-box-sizing:border-box;box-sizing:border-box;color:#fff;height:1.5em;line-height:1;max-width:5em;min-width:1.5em;overflow:hidden;padding:.25em;right:0;text-overflow:ellipsis;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-bottom-right{bottom:0;right:0;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom right;transform-origin:bottom right}.fa-layers-bottom-left{bottom:0;left:0;right:auto;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom left;transform-origin:bottom left}.fa-layers-top-right{right:0;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-top-left{left:0;right:auto;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top left;transform-origin:top left}.fa-lg{font-size:1.3333333333em;line-height:.75em;vertical-align:-.0667em}.fa-xs{font-size:.75em}.fa-sm{font-size:.875em}.fa-1x{font-size:1em}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-6x{font-size:6em}.fa-7x{font-size:7em}.fa-8x{font-size:8em}.fa-9x{font-size:9em}.fa-10x{font-size:10em}.fa-fw{text-align:center;width:1.25em}.fa-ul{list-style-type:none;margin-left:2.5em;padding-left:0}.fa-ul>li{position:relative}.fa-li{left:-2em;position:absolute;text-align:center;width:2em;line-height:inherit}.fa-border{border:solid .08em #eee;border-radius:.1em;padding:.2em .25em .15em}.fa-pull-left{float:left}.fa-pull-right{float:right}.fa.fa-pull-left,.fab.fa-pull-left,.fal.fa-pull-left,.far.fa-pull-left,.fas.fa-pull-left{margin-right:.3em}.fa.fa-pull-right,.fab.fa-pull-right,.fal.fa-pull-right,.far.fa-pull-right,.fas.fa-pull-right{margin-left:.3em}.fa-spin{-webkit-animation:fa-spin 2s infinite linear;animation:fa-spin 2s infinite linear}.fa-pulse{-webkit-animation:fa-spin 1s infinite steps(8);animation:fa-spin 1s infinite steps(8)}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360);transform:rotate(360)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360);transform:rotate(360)}}.fa-rotate-90{-webkit-transform:rotate(90);transform:rotate(90)}.fa-rotate-180{-webkit-transform:rotate(180);transform:rotate(180)}.fa-rotate-270{-webkit-transform:rotate(270);transform:rotate(270)}.fa-flip-horizontal{-webkit-transform:scale(-1,1);transform:scale(-1,1)}.fa-flip-vertical{-webkit-transform:scale(1,-1);transform:scale(1,-1)}.fa-flip-both,.fa-flip-horizontal.fa-flip-vertical{-webkit-transform:scale(-1,-1);transform:scale(-1,-1)}:root .fa-flip-both,:root .fa-flip-horizontal,:root .fa-flip-vertical,:root .fa-rotate-180,:root .fa-rotate-270,:root .fa-rotate-90{-webkit-filter:none;filter:none}.fa-stack{display:inline-block;height:2em;position:relative;width:2.5em}.fa-stack-1x,.fa-stack-2x{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.svg-inline--fa.fa-stack-1x{height:1em;width:1.25em}.svg-inline--fa.fa-stack-2x{height:2em;width:2.5em}.fa-inverse{color:#fff}.sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.sr-only-focusable:active,.sr-only-focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}.svg-inline--fa .fa-primary{fill:var(--fa-primary-color,currentColor);opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa .fa-secondary{fill:var(--fa-secondary-color,currentColor);opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-primary{opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-secondary{opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa mask .fa-primary,.svg-inline--fa mask .fa-secondary{fill:#000}.fad.fa-inverse{color:#fff}</style>
+  <link rel="stylesheet" href="./assets/css">
+  <link rel="stylesheet" href="./assets/bulma.min.css">
+  <link rel="stylesheet" href="./assets/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.3/css/academicons.min.css">
+  <link rel="stylesheet" href="./assets/all.min.css">
+  <link rel="stylesheet" href="./assets/index.css">
+  <link rel="icon" href="./assets/logo.png">
+  <link href="./assets/icon" rel="stylesheet">
+
+  <script src="./assets/jquery.min.js"></script><style type="text/css" id="operaUserStyle"></style>
+  <script defer src="./assets/all.min.js"></script>
+
+  <style>
+  :root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-color: #667eea;
+    --accent-light: #8b9ff5;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --bg-light: #f7fafc;
+    --bg-section: #ffffff;
+    --shadow-sm: 0 2px 8px rgba(102, 126, 234, 0.08);
+    --shadow-md: 0 4px 16px rgba(102, 126, 234, 0.12);
+    --shadow-lg: 0 8px 32px rgba(102, 126, 234, 0.16);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    color: var(--text-primary);
+    background: linear-gradient(to bottom, #ffffff 0%, var(--bg-light) 100%);
+  }
+
+  .section {
+    margin-bottom: -30px;
+    padding: 3.5rem 1.5rem;
+    position: relative;
+  }
+
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--primary-gradient);
+    border-radius: 2px;
+    opacity: 0.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero .hero-body {
+    position: relative;
+    z-index: 1;
+  }
+
+  .publication-title {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+
+  .hero.teaser {
+    background: var(--bg-section);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--accent-color);
+    margin: 2rem 0;
+  }
+
+  .hero.teaser .subtitle {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.1rem;
+  }
+
+  .section[style*="background-color"] {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%) !important;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    margin: 2rem 0;
+    backdrop-filter: blur(10px);
+  }
+
+  .title.is-3 {
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+
+  .title.is-3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-gradient);
+    border-radius: 2px;
+  }
+
+  .button.is-dark {
+    background: var(--primary-gradient);
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .button.is-dark:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-body {
+    padding-bottom: 5px;
+  }
+
+  .vertical-flex-layout {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  figure {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+  }
+
+  figure:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  figure img {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .figure-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .adjustable-font-size {
+    font-size: calc(0.5rem + 2vw);
+  }
+
+  .content.has-text-justified {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--accent-color);
+  }
+
+  .content.has-text-justified p {
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .content.has-text-justified ol {
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .content.has-text-justified ol li {
+    margin-bottom: 1rem;
+  }
+
+  .expandable-card .card-text-container {
+    max-height: 200px;
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  .expandable-card.expanded .card-text-container {
+    max-height: none;
+  }
+
+  .expandable-card:not(.expanded) .card-text-container:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 1));
+  }
+
+  .expand-btn {
+    position: relative;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #510c75;
+    border-color: transparent;
+  }
+
+  .expand-btn:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+    text-decoration: none;
+    border-color: transparent;
+    color: #510c75;
+  }
+
+  .expand-btn:focus {
+    outline: none;
+    text-decoration: none;
+  }
+
+  .expandable-card:not(.expanded) .expand-btn {
+    margin-top: -40px;
+  }
+
+  table.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: center;
+    margin: 2rem auto;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: white;
+  }
+
+  table.data-table caption {
+    caption-side: top;
+    font-weight: 600;
+    padding: 1.5rem;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+  }
+
+  table.data-table th,
+  table.data-table td {
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    padding: 12px 16px;
+    vertical-align: middle;
+  }
+
+  table.data-table thead th {
+    background: var(--primary-gradient);
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border: none;
+  }
+
+  table.data-table tbody tr:nth-child(even):not(.highlight) {
+    background-color: rgba(102, 126, 234, 0.02);
+  }
+
+  table.data-table tbody tr:hover {
+    background-color: rgba(102, 126, 234, 0.08);
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+  }
+
+  table.data-table tr.highlight {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%) !important;
+    font-weight: 600;
+    border-left: 4px solid var(--accent-color);
+  }
+
+  table.data-table tr.highlight td {
+    font-weight: 600;
+    color: var(--accent-color);
+  }
+
+  table.data-table thead {
+    border-bottom: none;
+  }
+
+  table.data-table tbody tr:first-child td {
+    padding-top: 16px;
+  }
+
+  caption {
+    caption-side: top;
+    padding: 8px;
+    font-weight: 600;
+  }
+
+  #BibTeX {
+    margin-bottom: -80px;
+  }
+
+  #BibTeX pre {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+  }
+
+  #BibTeX code {
+    color: #e2e8f0;
+    font-family: 'Monaco', 'Menlo', monospace;
+  }
+
+  #Acknowledgement {
+    margin-top: -80px;
+  }
+
+  .publication-links .link-block {
+    margin: 0.5rem;
+  }
+
+  .author-block a {
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+
+  .author-block a:hover {
+    border-bottom: 2px solid currentColor;
+  }
+
+  /* Subtle animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .section {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Improved spacing and readability */
+  .container.is-max-desktop {
+    max-width: 1000px;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  .soft {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              <span class="is-size-2">iReasoner: Trajectory-Aware Intrinsic Reasoning Supervision for Self-Evolving Large Multimodal Models</span>
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <div class="author-group">
+                <span class="author-block">
+                  <a href="mailto:meghana.sunil2023@vitstudent.ac.in" style="color:#f68946;font-weight:normal;">Meghana Sunil<sup>1</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a href="mailto:wsmv2@lunet.lboro.ac.uk" style="color:#008AD7;font-weight:normal;">Manikandarajan Venmathimaran<sup>2</sup></a>,
+                </span>
+                <span class="author-block">
+                  <a href="mailto:kavitha@nagasaki-u.ac.jp" style="color:#F2A900;font-weight:normal;">Muthu Subash Kavitha<sup>3</sup></a>
+                </span>
+              </div>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <sup>1</sup>VIT Chennai, India &nbsp;&nbsp;
+              <sup>2</sup>Loughborough University, UK &nbsp;&nbsp;
+              <sup>3</sup>Nagasaki University, Japan
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark" style="pointer-events: none; opacity: 0.6;">
+                    <span class="icon">
+                      <img src="./assets/arxiv.svg" alt="arXiv" style="height:1em; width:1em; filter: brightness(0) invert(1);">
+                    </span>
+                    <span>Paper (Coming Soon)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark" style="pointer-events: none; opacity: 0.6;">
+                    <span class="icon">
+                      <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"></path></svg>
+                    </span>
+                    <span>Code (Coming Soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <h4 class="subtitle has-text-justified">
+          <b>iReasoner</b> is a <b>fully unsupervised</b> self-evolving framework that improves LMM reasoning by explicitly eliciting and rewarding <b>chain-of-thought (CoT)</b> through <b>trajectory-aware intrinsic supervision</b>. Unlike prior methods that reward only final outcomes, iReasoner provides learning signals over <b>intermediate reasoning steps</b>, distinguishing reasoning paths that lead to the same answer without requiring ground-truth labels or external judges.
+        </h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background-color:#efeff081">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">
+            Abstract
+          </h2>
+          <div class="content has-text-justified">
+            <p>
+              Recent work shows that large multimodal models (LMMs) can self-improve from unlabeled data via self-play and intrinsic feedback. Yet existing self-evolving frameworks mainly reward final outcomes, leaving intermediate reasoning weakly constrained despite its importance for visually grounded decision making. We propose iReasoner, a self-evolving framework that improves an LMM's implicit reasoning by explicitly eliciting chain-of-thought (CoT) and rewarding its internal agreement. In a Proposer–Solver loop over unlabeled images, iReasoner augments outcome-level intrinsic rewards with a trajectory-aware signal defined over intermediate reasoning steps, providing learning signals that distinguish reasoning paths leading to the same answer without ground-truth labels or external judges. Starting from Qwen2.5-VL-7B, iReasoner yields up to +2.1 points across diverse multimodal reasoning benchmarks under fully unsupervised post-training. We hope this work serves as a starting point for reasoning-aware self-improvement in LMMs in purely unsupervised settings.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background-color:#efeff081">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">
+            🔥 Highlights
+          </h2>
+          <div class="content has-text-justified">
+            <ol type="1">
+              <li>
+                We introduce <b>iReasoner</b>, a fully unsupervised self-evolving framework that brings intermediate reasoning into the optimization loop for LMMs. Unlike prior work that rewards only final outcomes, iReasoner explicitly elicits chain-of-thought and provides trajectory-aware supervision over intermediate steps.
+              </li>
+              <br>
+              <li>
+                We propose an <b>intrinsic CoT agreement reward</b> that scores step-level alignment among Solver rollouts converging to the same answer. This provides learning signals that distinguish reasoning trajectories without labeled data or external judges, addressing the key limitation that outcome-only rewards cannot differentiate between stable and unstable reasoning paths.
+              </li>
+              <br>
+              <li>
+                Starting from Qwen2.5-VL-7B and training exclusively on unlabeled images, iReasoner achieves consistent improvements across eight multimodal reasoning benchmarks, with gains of up to +2.1 points. Our analysis shows that step-wise reasoning reward improves general-purpose transfer beyond answer-level agreement alone, particularly on tasks where intermediate structure matters.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Concept: Intrinsic CoT Agreement -->
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">
+          Intrinsic CoT Agreement Reward
+        </h2>
+      </div>
+    </div>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths" style="display:flex; align-items:flex-start; justify-content:center;">
+          <figure style="text-align: center;">
+            <img id="teaser" style="width:90%; height:auto;" src="./assets/figure1.png" alt="iReasoner CoT Agreement">
+            <figcaption>
+              <b>iReasoner's intrinsic step-level CoT agreement.</b> Given an unlabeled image, the Proposer generates a visually grounded question, and the Solver samples N reasoning rollouts, each producing a CoT with multiple intermediate steps and a final answer. Among rollouts in the dominant (majority-answer) group, we embed each step text into a vector and form per-step prototypes. Step agreement is computed via similarity and aggregated with higher weight on earlier, grounding-heavy steps to produce a scalar Intrinsic CoT Agreement Reward.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pipeline Overview -->
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">
+          iReasoner Pipeline
+        </h2>
+      </div>
+    </div>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths" style="display:flex; align-items:flex-start; justify-content:center;">
+          <figure style="text-align: center;">
+            <img id="pipeline" style="width:95%; height:auto;" src="./assets/figure2.png" alt="iReasoner Pipeline">
+            <figcaption>
+              <b>Overview of the iReasoner pipeline.</b> From an unlabeled image, a Proposer generates a question, and a Solver produces N reasoning rollouts. The answer distribution entropy shapes the Proposer reward and selects the dominant answer group. The Solver reward combines answer-level self-consistency with an intrinsic step-level agreement signal computed over intermediate reasoning traces, providing trajectory-aware supervision without annotated data or external verifiers.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Trajectory-Aware Supervision Matters -->
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">
+          Why Trajectory-Aware Supervision Matters
+        </h2>
+      </div>
+    </div>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              Outcome-only self-consistency treats distinct reasoning traces similarly when they reach the same final answer. As illustrated below, three Solver rollouts produce identical answers, but their intermediate steps differ substantially. Rollouts 1 and 3 follow a consistent signed-area decomposition, while Rollout 2 deviates via incorrect intermediate claims yet still arrives at the same answer. Since outcome-only intrinsic rewards depend only on answer agreement, these rollouts receive nearly identical learning signals despite qualitatively different reasoning traces. This motivates <b>step-aware supervision</b> in iReasoner, which directly evaluates and optimizes intermediate reasoning structure.
+            </p>
+          </div>
+          <div style="text-align: center; margin-top: 20px;">
+            <img src="./assets/figure4.png" alt="Outcome-only limitation" style="width:75%; height:auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">
+          Main Results
+        </h2>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div style="text-align: center;">
+            <table class="data-table" style="width: 100%;">
+              <caption>Evaluation results across eight multimodal reasoning benchmarks (Table 1 from paper).</caption>
+              <thead>
+                  <tr>
+                      <th>Model</th>
+                      <th>InfoGraphic-VQA<sub>val</sub></th>
+                      <th>AI2D</th>
+                      <th>ScienceQA</th>
+                      <th>MMMU<sub>val</sub></th>
+                      <th>ChartQA</th>
+                      <th>MathVista</th>
+                      <th>MathVision</th>
+                      <th>MathVerse</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Vision-Zero† (CLEVR)</td>
+                      <td>80.35</td><td>82.64</td><td>88.50</td><td>51.44</td><td>84.24</td><td>68.43</td><td>23.96</td><td>43.86</td>
+                  </tr>
+                  <tr>
+                      <td>VisPlay*</td>
+                      <td>–</td><td>–</td><td>–</td><td>38.27</td><td>–</td><td>–</td><td>31.15</td><td>39.14</td>
+                  </tr>
+                  <tr>
+                      <td>Qwen2.5-VL-7B (Baseline)</td>
+                      <td>80.44</td><td>82.61</td><td>88.30</td><td>51.11</td><td>84.00</td><td>68.47</td><td>23.91</td><td>43.78</td>
+                  </tr>
+                  <tr>
+                      <td>Qwen2.5-VL-7B w/ Discrete Reward</td>
+                      <td>80.52</td><td>82.18</td><td>87.98</td><td>50.84</td><td>84.62</td><td>68.88</td><td>22.52</td><td>42.10</td>
+                  </tr>
+                  <tr>
+                      <td>EvoLMM</td>
+                      <td>81.06</td><td>83.41</td><td>89.50</td><td>52.01</td><td>86.70</td><td>70.52</td><td>24.81</td><td>44.88</td>
+                  </tr>
+                  <tr>
+                      <td>Qwen2.5-VL-7B w/ Discrete Reward + Step-level</td>
+                      <td>80.78</td><td>82.95</td><td>88.92</td><td>51.48</td><td>85.42</td><td>69.31</td><td>24.12</td><td>44.18</td>
+                  </tr>
+                  <tr class="highlight">
+                      <td><b>iReasoner (Ours)</b></td>
+                      <td><b>81.56</b></td><td><b>83.89</b></td><td><b>89.92</b></td><td><b>52.37</b></td><td><b>85.78</b></td><td><b>69.74</b></td><td><b>25.29</b></td><td><b>45.91</b></td>
+                  </tr>
+              </tbody>
+            </table>
+            <p class="soft" style="margin-top:6px;">† uses external supervision. * uses LLM-as-a-judge evaluation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ablation Study -->
+      <br>
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div style="text-align: center;">
+            <table class="data-table" style="width: 100%;">
+              <caption>Ablation study of intrinsic reasoning supervision (Table 2 from paper).</caption>
+              <thead>
+                  <tr>
+                      <th>Ablation</th>
+                      <th>InfoGraphic-VQA<sub>val</sub></th>
+                      <th>AI2D</th>
+                      <th>ScienceQA</th>
+                      <th>MMMU<sub>val</sub></th>
+                      <th>ChartQA</th>
+                      <th>MathVista</th>
+                      <th>MathVision</th>
+                      <th>MathVerse</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Qwen2.5-VL-7B (Baseline)</td>
+                      <td>80.44</td><td>82.61</td><td>88.30</td><td>51.11</td><td>84.00</td><td>68.47</td><td>23.91</td><td>43.78</td>
+                  </tr>
+                  <tr class="highlight">
+                      <td><b>Step-level majority (Full)</b></td>
+                      <td><b>81.56</b></td><td><b>83.89</b></td><td><b>89.92</b></td><td><b>52.37</b></td><td><b>85.78</b></td><td><b>69.74</b></td><td><b>25.29</b></td><td><b>45.91</b></td>
+                  </tr>
+                  <tr>
+                      <td>Soft majority reward only</td>
+                      <td>81.12</td><td>83.36</td><td>89.41</td><td>51.92</td><td>86.64</td><td>70.41</td><td>24.62</td><td>44.71</td>
+                  </tr>
+                  <tr>
+                      <td>Step-level reward only</td>
+                      <td>80.61</td><td>82.69</td><td>88.44</td><td>50.98</td><td>84.38</td><td>68.73</td><td>24.18</td><td>43.87</td>
+                  </tr>
+                  <tr>
+                      <td>w/o Warmup schedule</td>
+                      <td>81.04</td><td>83.21</td><td>89.26</td><td>51.74</td><td>85.02</td><td>68.97</td><td>24.63</td><td>45.11</td>
+                  </tr>
+                  <tr>
+                      <td>w/o Position decay</td>
+                      <td>81.29</td><td>83.58</td><td>89.55</td><td>52.02</td><td>85.41</td><td>69.34</td><td>25.02</td><td>45.49</td>
+                  </tr>
+                  <tr>
+                      <td>w/o Density weighting</td>
+                      <td>81.18</td><td>83.46</td><td>89.47</td><td>51.88</td><td>85.29</td><td>69.19</td><td>24.91</td><td>45.32</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Training Dynamics -->
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">
+          Training Dynamics and Step Structure
+        </h2>
+      </div>
+    </div>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              We analyze how the self-evolution process shapes question difficulty and reasoning structure over training. The top plots show stable Proposer rewards and sustained answer entropy, indicating that questions remain at intermediate difficulty without collapsing to trivial or unsolvable extremes. The bottom plots demonstrate increasing majority-group density and step similarity, showing that Solver rollouts progressively converge on both final answers and intermediate reasoning structure.
+            </p>
+          </div>
+          <div style="text-align: center; margin-top: 20px;">
+            <img src="./assets/figure3.png" alt="Training Dynamics" style="width:85%; height:auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Within-Mode Analysis -->
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">
+          Within-Mode Divergence Analysis
+        </h2>
+      </div>
+    </div>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              Even when rollouts agree on the final answer, their intermediate reasoning can vary substantially. We visualize per-step agreement within the dominant-answer group using leave-one-out similarity scores. The heatmap shows that some rollouts deviate sharply at specific step indices while remaining aligned elsewhere. Disagreement concentrates in the middle of reasoning traces (steps 2–3), supporting that outcome-only rewards cannot distinguish stable from unstable reasoning within the dominant answer mode.
+            </p>
+          </div>
+          <div style="text-align: center; margin-top: 20px;">
+            <img src="./assets/figure7.png" alt="Within-mode analysis" style="width:95%; height:auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">
+        Citation
+      </h2>
+      <pre><code>
+@misc{ireasoner2025,
+      title={iReasoner: Trajectory-Aware Intrinsic Reasoning Supervision for Self-Evolving Large Multimodal Models}, 
+      author={Anonymous},
+      year={2025},
+      note={Anonymous ACL submission}
+}
+      </code></pre>
+    </div>
+  </section>
+
+  <!-- Acknowledgement -->
+  <section class="section" id="Acknowledgement">
+    <div class="container is-max-desktop content">
+      <h2 class="title">
+        Acknowledgement
+      </h2>
+      <p>
+        This website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        We are thankful to open-source LMM projects for releasing models/code and templates.
+      </p>
+    </div>
+  </section>
+
+</body>
+</html>
