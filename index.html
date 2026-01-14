@@ -507,129 +507,11 @@
   <script src="./assets/jquery.min.js"></script>
   <style type="text/css" id="operaUserStyle"></style>
   <script defer src="./assets/all.min.js"></script>
+  <script type="module" src="./assets/gradio.js"></script>
 
   <style>
-    :root {
-      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      --accent-color: #667eea;
-      --accent-light: #8b9ff5;
-      --text-primary: #2d3748;
-      --text-secondary: #4a5568;
-      --bg-light: #f7fafc;
-      --bg-section: #ffffff;
-      --shadow-sm: 0 2px 8px rgba(102, 126, 234, 0.08);
-      --shadow-md: 0 4px 16px rgba(102, 126, 234, 0.12);
-      --shadow-lg: 0 8px 32px rgba(102, 126, 234, 0.16);
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-      color: var(--text-primary);
-      background: linear-gradient(to bottom, #ffffff 0%, var(--bg-light) 100%);
-    }
-
     .section {
-      padding: 3.5rem 1.5rem;
-      position: relative;
-    }
-
-    .section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: var(--primary-gradient);
-      border-radius: 2px;
-      opacity: 0.6;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
-    .hero .hero-body {
-      position: relative;
-      z-index: 1;
-    }
-
-    .publication-title {
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-    }
-
-    .hero.teaser {
-      background: var(--bg-section);
-      box-shadow: var(--shadow-sm);
-      border-left: 4px solid var(--accent-color);
-      margin: 2rem 0;
-    }
-
-    .hero.teaser .subtitle {
-      color: var(--text-secondary);
-      line-height: 1.7;
-      font-size: 1.1rem;
-    }
-
-    .section[style*="background-color"] {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%) !important;
-      border-radius: 12px;
-      box-shadow: var(--shadow-sm);
-      margin: 2rem 0;
-      backdrop-filter: blur(10px);
-    }
-
-    .title.is-3 {
-      color: var(--text-primary);
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 0.5rem;
-    }
-
-    .title.is-3::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--primary-gradient);
-      border-radius: 2px;
-    }
-
-    .button.is-dark {
-      background: var(--primary-gradient);
-      border: none;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .button.is-dark:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      margin-bottom: -30px;
     }
 
     .card-body {
@@ -645,34 +527,6 @@
       gap: 5px;
     }
 
-    figure {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: var(--shadow-md);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(102, 126, 234, 0.1);
-    }
-
-    figure:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
-    }
-
-    figure img {
-      border-radius: 8px;
-      max-width: 100%;
-      height: auto;
-    }
-
-    figcaption {
-      margin-top: 1rem;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      font-style: italic;
-    }
-
     .figure-img {
       max-width: 100%;
       height: auto;
@@ -682,28 +536,7 @@
       font-size: calc(0.5rem + 2vw);
     }
 
-    .content.has-text-justified {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: var(--shadow-sm);
-      border-left: 4px solid var(--accent-color);
-    }
-
-    .content.has-text-justified p {
-      line-height: 1.8;
-      color: var(--text-secondary);
-    }
-
-    .content.has-text-justified ol {
-      line-height: 1.8;
-      color: var(--text-secondary);
-    }
-
-    .content.has-text-justified ol li {
-      margin-bottom: 1rem;
-    }
-
+    /* gradient mask like original for expandable cards (kept here if needed) */
     .expandable-card .card-text-container {
       max-height: 200px;
       overflow-y: hidden;
@@ -750,71 +583,57 @@
 
     table.data-table {
       width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
+      border-collapse: collapse;
       text-align: center;
-      margin: 2rem auto;
+      margin: 0 auto;
       font-size: 0.95rem;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      background: white;
+      border: 1px solid #ddd;
     }
 
     table.data-table caption {
       caption-side: top;
       font-weight: 600;
-      padding: 1.5rem;
-      color: var(--text-primary);
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-      border-radius: 12px 12px 0 0;
-      margin-bottom: 0;
+      padding: 10px;
+      color: #333;
     }
 
     table.data-table th,
     table.data-table td {
-      border: 1px solid rgba(102, 126, 234, 0.1);
-      padding: 12px 16px;
+      border: 1px solid #dcdcdc;
+      padding: 8px 10px;
       vertical-align: middle;
     }
 
     table.data-table thead th {
-      background: var(--primary-gradient);
-      color: white;
+      background-color: #f5f5f5;
+      /* light gray header */
       font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-      border: none;
+      color: #000;
     }
 
     table.data-table tbody tr:nth-child(even):not(.highlight) {
-      background-color: rgba(102, 126, 234, 0.02);
+      background-color: #fafafa;
+      /* subtle alternating rows */
     }
 
     table.data-table tbody tr:hover {
-      background-color: rgba(102, 126, 234, 0.08);
-      transform: scale(1.01);
-      transition: all 0.2s ease;
+      background-color: #f0f0f9;
+      /* light hover tone */
     }
 
     table.data-table tr.highlight {
-      background: linear-gradient(90deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%) !important;
+      background-color: #e6e6ff !important;
+      /* soft blue highlight for EvoLMM */
       font-weight: 600;
-      border-left: 4px solid var(--accent-color);
     }
 
     table.data-table tr.highlight td {
       font-weight: 600;
-      color: var(--accent-color);
     }
 
     table.data-table thead {
-      border-bottom: none;
-    }
-
-    table.data-table tbody tr:first-child td {
-      padding-top: 16px;
+      border-bottom: 2px solid #ccc;
+      /* thin divider between head/body */
     }
 
     caption {
@@ -823,63 +642,17 @@
       font-weight: 600;
     }
 
-
+    #BibTeX {
+      margin-bottom: -80px;
+    }
 
     #Acknowledgement {
-      margin-top: 0px;
-    }
-
-    .publication-links .link-block {
-      margin: 0.5rem;
-    }
-
-    .author-block a {
-      transition: all 0.2s ease;
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-    }
-
-    .author-block a:hover {
-      border-bottom: 2px solid currentColor;
-    }
-
-    /* Subtle animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .section {
-      animation: fadeInUp 0.6s ease-out;
-    }
-
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Improved spacing and readability */
-    .container.is-max-desktop {
-      max-width: 1000px;
-    }
-
-    p {
-      margin-bottom: 1rem;
-    }
-
-    .soft {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      font-style: italic;
+      margin-top: -80px;
     }
   </style>
+
+
+  <script type="module" src="./assets/index-9405f928.js"></script>
 </head>
 
 <body>
@@ -921,18 +694,18 @@
             <div class="column has-text-centered">
               <div class="publication-links">
                 <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark"
-                    style="pointer-events: none; opacity: 0.6;">
+                  <a href="https://arxiv.org/pdf/2601.05877" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <img src="./assets/arxiv.svg" alt="arXiv"
                         style="height:1em; width:1em; filter: brightness(0) invert(1);">
                     </span>
-                    <span>Paper (Coming Soon)</span>
+                    <span>Paper</span>
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark"
-                    style="pointer-events: none; opacity: 0.6;">
+                  <a href="https://github.com/meghanaasunil/iReasoner" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false"
                         data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -942,7 +715,7 @@
                         </path>
                       </svg>
                     </span>
-                    <span>Code (Coming Soon)</span>
+                    <span>Code</span>
                   </a>
                 </span>
               </div>
