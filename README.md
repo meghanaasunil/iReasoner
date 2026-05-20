@@ -121,7 +121,7 @@ In particular, the evaluation uses the lmms-eval-based setup located in `Evaluat
 
 This work builds upon [EvoLMM](https://github.com/mbzuai-oryx/EvoLMM).
 
-##Citation 
+## Citation 
 
 ``` @misc{sunil2026ireasonertrajectoryawareintrinsicreasoning,
       title={iReasoner: Trajectory-Aware Intrinsic Reasoning Supervision for Self-Evolving Large Multimodal Models}, 
@@ -131,4 +131,4 @@ This work builds upon [EvoLMM](https://github.com/mbzuai-oryx/EvoLMM).
       archivePrefix={arXiv},
       primaryClass={cs.CL},
       url={https://arxiv.org/abs/2601.05877}, 
-}```
+} ```
